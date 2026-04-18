@@ -1,0 +1,50 @@
+{
+  "entities": {
+    "Invoice": {
+      "title": "Invoice",
+      "description": "A generated invoice with business and client details.",
+      "type": "object",
+      "properties": {
+        "invoiceNumber": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "businessDetails": { "type": "object" },
+        "clientDetails": { "type": "object" },
+        "items": { "type": "array" },
+        "paymentMode": { "type": "array", "items": { "type": "string" } },
+        "lessAmount": { "type": "number" },
+        "status": { "type": "string", "enum": ["draft", "sent", "paid"] },
+        "userId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["invoiceNumber", "date", "businessDetails", "clientDetails", "items", "userId"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "A product in the master database.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "mrp": { "type": "number" },
+        "price": { "type": "number" },
+        "unit": { "type": "string" },
+        "discountRate": { "type": "number" },
+        "stock": { "type": "number" },
+        "usageCount": { "type": "number" },
+        "lastUsed": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "category", "mrp", "price", "unit", "stock"]
+    }
+  },
+  "firestore": {
+    "/invoices/{invoiceId}": {
+      "schema": "Invoice",
+      "description": "Collection of invoices created by users."
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Master list of products."
+    }
+  }
+}

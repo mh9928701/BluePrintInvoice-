@@ -1,0 +1,6 @@
+{
+  "name": "Remix: BluePrint Invoice",
+  "description": "A modern and clean invoice generator with PDF export and cloud saving.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
